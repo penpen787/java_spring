@@ -3,3 +3,8 @@
 *.iml
 /.settings/
 .settings
+.settings/
+
+
+# Eclipse Core
+.project
