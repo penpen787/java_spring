@@ -5,6 +5,7 @@ import chap10.printer.StringPrinter;
 import org.junit.Test;
 import org.springframework.beans.factory.config.BeanDefinition;
 import org.springframework.beans.factory.config.RuntimeBeanReference;
+import org.springframework.beans.factory.support.PropertiesBeanDefinitionReader;
 import org.springframework.beans.factory.support.RootBeanDefinition;
 import org.springframework.beans.factory.xml.XmlBeanDefinitionReader;
 import org.springframework.context.support.GenericApplicationContext;
@@ -55,5 +56,24 @@ public class ApplicationContextTest {
         hello.print();
 
         assertThat(ac.getBean("printer").toString(), is("Hello Spring"));
+    }
+
+    @Test
+    public void genericApplicationContextUsingPropertyTest() {
+        GenericApplicationContext ac = new GenericApplicationContext();
+        PropertiesBeanDefinitionReader reader = new PropertiesBeanDefinitionReader(ac);
+
+        reader.loadBeanDefinitions("chap10/PropertyBeanDefinitionExample.properties");
+        // Same code,
+//        reader.loadBeanDefinitions(new ClassPathResource("chap10/PropertyBeanDefinitionExample.properties"));
+
+
+        ac.refresh();
+        Hello hello = ac.getBean("hello", Hello.class);
+        hello.print();
+
+        String result = ac.getBean("printer").toString();
+        System.out.println("RESULT : " + result);
+        assertThat(result, is("Hello Spring"));
     }
 }
