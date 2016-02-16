@@ -1,0 +1,10 @@
+/build/
+/target/
+*.iml
+/.settings/
+.settings
+.settings/
+
+
+# Eclipse Core
+.project
