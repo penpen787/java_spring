@@ -1,7 +1,7 @@
 package chap10.pojo;
 
 import chap10.printer.Printer;
-
+// TEST: hello
 public class Hello {
 
 	String name;
