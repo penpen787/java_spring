@@ -1,13 +1,14 @@
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>toby-spring</groupId>
 	<artifactId>toby-spring</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<packaging>war</packaging>
 
-    <properties>
-        <spring.version>4.2.4.RELEASE</spring.version>
-        <jackson.version>2.7.0</jackson.version>
+	<properties>
+		<spring.version>4.2.4.RELEASE</spring.version>
+		<jackson.version>2.7.0</jackson.version>
 		<!-- JPA, 하이버네이트 버전 -->
 		<hibernate.version>4.3.10.Final</hibernate.version>
 		<!-- 데이터베이스 버전 -->
@@ -21,7 +22,7 @@
 		<!-- 로그 버전 -->
 		<logback.version>1.1.1</logback.version>
 		<slf4j.version>1.7.6</slf4j.version>
-    </properties>
+	</properties>
 
 	<build>
 		<sourceDirectory>src</sourceDirectory>
@@ -46,7 +47,7 @@
 	</build>
 
 	<dependencies>
-        <!-- Spring -->
+		<!-- Spring -->
 		<dependency>
 			<groupId>org.springframework</groupId>
 			<artifactId>spring-test</artifactId>
@@ -54,7 +55,7 @@
 		</dependency>
 		<dependency>
 			<groupId>org.springframework</groupId>
-			<artifactId>spring-context</artifactId>
+			<artifactId>spring-context-support</artifactId>
 			<version>${spring.version}</version>
 		</dependency>
 		<dependency>
@@ -111,6 +112,14 @@
 			<scope>provided</scope>
 		</dependency>
 
+		<!-- Javax mail -->
+		<dependency>
+			<groupId>javax.mail</groupId>
+			<artifactId>javax.mail-api</artifactId>
+			<version>1.5.5</version>
+		</dependency>
+
+
 		<!-- 로깅 SLF4J & LogBack -->
 		<dependency>
 			<groupId>org.slf4j</groupId>
@@ -125,12 +134,18 @@
 			<scope>runtime</scope>
 		</dependency>
 
-        <!-- JUnit -->
-        <dependency>
-            <groupId>junit</groupId>
-            <artifactId>junit</artifactId>
-            <version>4.12</version>
-            <scope>test</scope>
-        </dependency>
-    </dependencies>
+		<!-- JUnit -->
+		<dependency>
+			<groupId>junit</groupId>
+			<artifactId>junit</artifactId>
+			<version>4.12</version>
+			<scope>test</scope>
+		</dependency>
+		<dependency>
+			<groupId>org.mockito</groupId>
+			<artifactId>mockito-all</artifactId>
+			<version>1.10.19</version>
+		</dependency>
+
+	</dependencies>
 </project>
