@@ -10,9 +10,13 @@
 	
 	<bean id="userService" class="chap6.factorybean.TxProxyFactoryBean" >
 		<property name="target" ref="userServiceImpl" />
-		<property name="transactionManager" ref="transactionManager" />
-		<property name="pattern" value="upgradeLevels" />
-		<property name="serviceInterface" value="user.service.UserService" />
+		<!-- Advice와 Advisor 를 동시에 설정할 수 있는 프로퍼티 
+		주의점은 ref 애트리뷰트가 아닌 값으로 넣어줘야함 -->
+		<property name="interceptorNames"> 
+			<list>
+				<value>transactionAdvisor</value>
+			</list>
+		</property>
 	</bean>
 	
 	<bean id="dataSource" class="org.springframework.jdbc.datasource.SimpleDriverDataSource">
@@ -36,5 +40,21 @@
 	<bean id="transactionManager" class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
 		<property name="dataSource" ref="dataSource" />  
 	</bean>
+	
+	<bean id="transactionAdvice" class="chap6.transaction.TransactionAdvice" >
+		<property name="transactionManager" ref="transactionManager" />
+	</bean>
+	
+	<bean id="transactionPointcut" class="org.springframework.aop.support.NameMatchMethodPointcut" >
+		<property name="mappedName" value="upgrade*" />
+	</bean>
+	
+	<bean id="transactionAdvisor" class="org.springframework.aop.support.DefaultPointcutAdvisor" >
+		<property name="advice" ref="transactionAdvice" />
+		<property name="pointcut" ref="transactionPointcut" />
+	</bean>
+						
+						
+						
 						
 </beans>

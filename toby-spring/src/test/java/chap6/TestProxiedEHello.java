@@ -1,10 +1,12 @@
 package chap6;
 
-import static org.junit.Assert.*;
 import static org.hamcrest.CoreMatchers.*;
+import static org.junit.Assert.*;
+
 import java.lang.reflect.Proxy;
 
 import org.junit.Test;
+import org.springframework.aop.framework.ProxyFactoryBean;
 
 import chap6.pojo.Hello;
 import chap6.pojo.HelloTarget;
@@ -21,4 +23,15 @@ public class TestProxiedEHello {
 		assertThat(proxiedHello.sayHello("toby"), is("HELLO TOBY"));
 	}
 
+	@Test
+	public void proxyFactoryBean() {
+		ProxyFactoryBean pfBean = new ProxyFactoryBean();
+		pfBean.setTarget(new HelloTarget());
+		pfBean.addAdvice(new UppercaseAdvice());
+
+		Hello proxiedHello = (Hello) pfBean.getObject();
+		
+		assertThat(proxiedHello.sayHello("Penpen"), is("HELLO PENPEN"));
+	}
+	
 }
