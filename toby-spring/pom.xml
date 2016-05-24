@@ -84,6 +84,14 @@
 			<scope>runtime</scope>
 		</dependency>
 
+		<!-- Mysql JDBC -->
+		<dependency>
+			<groupId>mysql</groupId>
+			<artifactId>mysql-connector-java</artifactId>
+			<version>5.1.38</version>
+		</dependency>
+
+
 		<!-- 커넥션 풀 -->
 		<dependency>
 			<groupId>org.apache.tomcat</groupId>
