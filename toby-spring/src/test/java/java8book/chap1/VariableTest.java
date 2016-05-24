@@ -1,4 +1,4 @@
-package java8.chap1;
+package java8book.chap1;
 
 import org.junit.Test;
 
