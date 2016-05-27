@@ -6,7 +6,8 @@ public class FirstInterfaceTest {
 
 	@Test
 	public void test1() {
-		// 1. 익명클래스 
+		
+		// 1. 기존표현 - 익명클래스 
 		FirstInterface<String> fi1 = new FirstInterface<String>() {
 			@Override
 			public int method1(String t1) {
